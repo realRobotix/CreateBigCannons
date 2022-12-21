@@ -1,4 +1,4 @@
-# Create Big Cannons
+# Create Big Cannon
 
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/rbasamoyai/CreateBigCannons/Java%20CI%20with%20Gradle)](../../actions/workflows/gradle.yml)
 [![Discord Invite](https://img.shields.io/discord/996633868692111381?label=Discord&color=5865f2)](https://discord.gg/vgfMMUUgvT)
