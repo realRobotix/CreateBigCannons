@@ -139,6 +139,17 @@ repositories {
     		includeGroup "curse.maven"
     	}
     }
+    maven {
+        name = "CBC GitHub Packages"
+        url = "https://maven.pkg.github.com/rbasamoyai/createbigcannons"
+        // gpr.user / GITHUB_ACTOR(used for GitHub Actions) = GitHub username
+        // gpr.key / GITHUB_TOKEN(used for GitHub Actions) = GitHub personal access token (classic) with at least "packages:read" scope
+        // https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+        credentials {
+            username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+            password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+        }
+    }
 }
 
 dependencies {
@@ -147,7 +158,8 @@ dependencies {
     implementation fg.deobf("com.simibubi.create:create-${mc_version}:${create_version}:slim") { transitive = false } // Create
     implementation fg.deobf("com.jozufozu.flywheel:flywheel-forge-${mc_version}:${flywheel_version}") // Flywheel
     implementation fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}") // Registrate
-    
+    implementation fg.deobf("com.rbasamoyai:createbigcannons:${cbc_version}") // Create Big Cannons
+
     // JEI
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
